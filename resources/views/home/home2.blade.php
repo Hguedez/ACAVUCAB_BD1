@@ -32,7 +32,7 @@
   </head>
   <body>
      <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
   <div class="container">
    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,12 +42,12 @@
       
       <ul class="navbar-nav mr-auto ">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home
+          <a class="nav-link active" href="/">Home
                 <span class="sr-only">(current)</span>
               </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="/catalogo">Catalogo</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Services</a>
@@ -57,11 +57,41 @@
         </li>
 
       </ul>
-      <div class=" mr-auto">
-        <a  href="login.html">Iniciar sesion</a>
-        <p class="espacio">,</p>
-        <a  href="register.html">Registrarse</a>
-      </div>
+      <ul class="navbar-nav mr-auto">
+      <!-- Authentication Links -->
+      @guest
+      
+      <li class="nav-item">
+          <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
+      </li>
+      @if (Route::has('register'))
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+          </li>
+      @endif
+      
+    @else
+      <li class="nav-item dropdown">
+          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              {{ Auth::user()->name }} <span class="caret"></span>
+          </a>
+        <div class="dropdown">
+                  <a class="" href="{{ route('logout') }}">
+          <div class="dropdown-menu " aria-labelledby="dropdownMenu2">
+              <a class="" href="{{ route('logout') }}"
+                 onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                  {{ __('Logout') }}
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+          </div>
+        </div>
+      </li>
+    @endguest
+
+      </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
@@ -70,6 +100,8 @@
   </div>
 </nav>
 
+    
+</div>
 <header>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -126,7 +158,7 @@
     
 </section>
       
-    
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
