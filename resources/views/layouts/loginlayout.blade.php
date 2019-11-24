@@ -14,7 +14,9 @@
   --input-padding-x: 1.5rem;
   --input-padding-y: 0.75rem;
 }
-
+h3{
+  text-align: center;
+}
 .login,
 .image {
   min-height: 100vh;
