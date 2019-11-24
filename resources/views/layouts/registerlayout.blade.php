@@ -5,8 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+      <!-- Custom VUE styles for this template -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+
 
     <title>ACAVUCAB</title>
     <style >
@@ -16,8 +21,8 @@
 }
 
 body {
-  background: #007bff;
-  background: linear-gradient(to right, #0062E6, #33AEFF);
+  background: #E54A24;
+  background: linear-gradient(to right, #C61818, #FA8282);
 }
 
 .card-signin {
@@ -47,7 +52,9 @@ body {
 .form-signin {
   width: 100%;
 }
-
+.hey{
+  border-radius: 5rem;
+}
 .form-signin .btn {
   font-size: 80%;
   border-radius: 5rem;
@@ -131,7 +138,7 @@ body {
     </style>
   </head>
   <body>
-        <div class="app">
+        <div id="app">
             @yield('content')
         </div>
     </body>
